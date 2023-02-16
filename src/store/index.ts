@@ -12,6 +12,10 @@ export const useStore = defineStore("store", {
         getNextRecipeId(state) {
             return state.recipes.length + 1;
         },
+        allRecipeTypes(state) {
+            const recipeTypes = state.recipes.map((recipe) => recipe.type.main);
+            return [...new Set(recipeTypes)];
+        },
     },
     actions: {
         addNewRecipe(newRecipe: Recipe) {
